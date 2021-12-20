@@ -1,3 +1,5 @@
+<%! private int number = 0;%>
+
 <h1>Table Generator.</h1>
 <table>
     <form action='login.jsp'>
@@ -17,7 +19,7 @@
     cols = Integer.parseInt(request.getParameter("cols"));
     rows = Integer.parseInt(request.getParameter("rows"));
     if(cols == 0 || rows == 0){
-        throw new NumberFormatException("Cols and Rows can not be zero together.");
+        throw new NumberFormatException();
     }
   }
   catch(NumberFormatException ex){
@@ -39,5 +41,9 @@
     result+="</table>";
   }
 
+  if(number==0){
+    result="";
+  }
+  number++;
   out.write("<center>"+result+"</center>");
 %>
